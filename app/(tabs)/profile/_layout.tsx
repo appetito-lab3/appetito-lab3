@@ -1,4 +1,3 @@
-import React from 'react';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { useColorScheme } from 'react-native';
@@ -8,7 +7,7 @@ const _layout = () => {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack>
-                <Stack.Screen name="profile" />
+                <Stack.Screen name="usuario" />
             </Stack>
         </ThemeProvider>
     );
