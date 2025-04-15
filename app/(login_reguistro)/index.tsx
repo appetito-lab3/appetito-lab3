@@ -8,10 +8,23 @@ import {
 } from 'react-native';
 import CheckBox from 'expo-checkbox'; // Importando la librería
 import { FontAwesome } from '@expo/vector-icons';
-import { Link } from "expo-router";
+import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
 
 export default function App() {
   const [isSelected, setSelection] = useState<boolean>(false);
+  const router = useRouter(); // Inicializa el router
+
+  const handleNavigateToTabs = () => {
+    router.push("/(tabs)"); // Redirige a (tabs)
+  };
+
+  const handleNavigateToRegister = () => {
+    router.push("/record"); // Redirige a reguistro
+  };
+
+  const handleNavigateToRecover = () => {
+    router.push("/recover"); // Redirige a recuperar
+  };
 
   return (
     <View style={styles.container}>
@@ -44,24 +57,22 @@ export default function App() {
           style={styles.checkbox}
         />
         <Text style={styles.label}>Recordar Usuario</Text>
-        <TouchableOpacity>
-          <Text ></Text>
-          <Link href={"/recuperar"} style={styles.link}>Olvidé mi contraseña</Link>
+        <TouchableOpacity onPress={handleNavigateToRecover}>
+          <Text style={styles.link}>Olvidé mi contraseña</Text>
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={handleNavigateToTabs}>
+        <Text style={styles.buttonText}>entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Link href={"/reguistro"} style={styles.buttonText}>crear cuenta</Link>
+      <TouchableOpacity onPress={handleNavigateToRegister}>
+        <Text style={styles.createAccountText}>crear cuenta</Text>
       </TouchableOpacity>
 
       <Text style={styles.or}>o</Text>
 
       <View style={styles.socialLoginContainer}>
-        <FontAwesome name="apple" size={32} color="#000" />
         <FontAwesome name="google" size={32} color="#4285F4" />
       </View>
     </View>
@@ -122,6 +133,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  createAccountText: { // Estilo para el texto de "crear cuenta"
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
