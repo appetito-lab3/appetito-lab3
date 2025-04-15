@@ -32,7 +32,7 @@ export default function PasswordRecovery() {
 
       {/* Botón de Recuperar */}
       <TouchableOpacity style={styles.button} >
-        <Link href={"/Loguin"} style={styles.buttonText}>Recuperar</Link>
+        <Link href={"/index"} style={styles.buttonText}>Recuperar</Link>
       
       </TouchableOpacity>
     </View>
