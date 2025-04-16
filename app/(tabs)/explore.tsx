@@ -1,109 +1,255 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-
-export default function TabTwoScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
-  );
+interface PostProps {
+  username: string;
+  timeAgo: string;
+  postContent: string;
+  initialLikesCount: number;
+  commentsCount: number;
+  onProfilePress: () => void;
 }
 
+const Post: React.FC<PostProps> = ({
+  username,
+  timeAgo,
+  postContent,
+  initialLikesCount,
+  commentsCount,
+  onProfilePress,
+}) => {
+  const [likesCount, setLikesCount] = useState(initialLikesCount);
+  const [liked, setLiked] = useState(false);
+  const [showCommentInput, setShowCommentInput] = useState(false);
+  const [commentText, setCommentText] = useState('');
+
+  const handleLikePress = () => {
+    if (!liked) {
+      setLikesCount(likesCount + 1);
+      setLiked(true);
+    } else {
+      setLikesCount(likesCount - 1);
+      setLiked(false);
+    }
+  };
+
+  const handleCommentPress = () => {
+    setShowCommentInput(!showCommentInput);
+  };
+
+  const handleSubmitComment = () => {
+    // Aquí iría la lógica para enviar el comentario
+    console.log('Comentario enviado:', commentText);
+    setCommentText('');
+    setShowCommentInput(false);
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={onProfilePress} style={styles.profileSection}>
+          <Image
+            source={require('../../assets/images/perfil.png')}
+            style={styles.profileImage}
+          />
+          <TouchableOpacity onPress={onProfilePress}>
+            <Text style={styles.username}>Jose Asuaje</Text>
+          </TouchableOpacity>
+        </TouchableOpacity>
+        <Text style={styles.timeAgo}>Publicado hace {timeAgo}</Text>
+      </View>
+
+      <Text style={styles.postText}>{postContent}</Text>
+      
+      <Image 
+        source={require('../../assets/images/arepas.png')} 
+        style={styles.postImage}
+        resizeMode="cover"
+      />
+      
+      <View style={styles.statsContainer}>
+        <View style={styles.statItem}>
+          <FontAwesome name="thumbs-up" size={20} color="#666" />
+          <Text style={styles.statText}>{likesCount} Me gusta</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Ionicons name="chatbubble-outline" size={20} color="#666" />
+          <Text style={styles.statText}>{commentsCount} Comentarios</Text>
+        </View>
+      </View>
+      
+      <View style={styles.actionsContainer}>
+        <TouchableOpacity 
+          style={[styles.actionButton, liked && styles.actionButtonActive]} 
+          onPress={handleLikePress}
+        >
+          <FontAwesome 
+            name={liked ? "thumbs-up" : "thumbs-o-up"} 
+            size={22} 
+            color={liked ? "#1877f2" : "#666"} 
+          />
+          <Text style={[styles.actionText, liked && styles.actionTextActive]}>Me gusta</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.actionButton} onPress={handleCommentPress}>
+          <Ionicons name="chatbubble-outline" size={22} color="#666" />
+          <Text style={styles.actionText}>Comentar</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.actionButton}>
+          <FontAwesome name="heart" size={22} color="#666" />
+          <Text style={styles.actionText}>Me encanta</Text>
+        </TouchableOpacity>
+      </View>
+      
+      {showCommentInput && (
+        <View style={styles.commentInputContainer}>
+          <Image
+            source={require('../../assets/images/perfil.png')}
+            style={styles.commentProfileImage}
+          />
+          <TextInput
+            style={styles.commentInput}
+            placeholder="Escribe un comentario..."
+            value={commentText}
+            onChangeText={setCommentText}
+            multiline
+          />
+          <TouchableOpacity onPress={handleSubmitComment} style={styles.sendButton}>
+            <Ionicons name="send" size={24} color="#1877f2" />
+          </TouchableOpacity>
+        </View>
+      )}
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 12,
+    marginVertical: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+    elevation: 2,
   },
-  titleContainer: {
+  headerContainer: {
     flexDirection: 'row',
-    gap: 8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  profileSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 8,
+  },
+  username: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#000',
+  },
+  timeAgo: {
+    fontSize: 12,
+    color: '#666',
+    alignSelf: 'flex-end',
+  },
+  postText: {
+    marginVertical: 10,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  postImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 8,
+    marginVertical: 8,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  statItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statText: {
+    marginLeft: 4,
+    fontSize: 14,
+    color: '#666',
+  },
+  actionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 8,
+  },
+  actionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
+  },
+  actionButtonActive: {
+    opacity: 1,
+  },
+  actionText: {
+    marginLeft: 4,
+    fontSize: 14,
+    color: '#666',
+  },
+  actionTextActive: {
+    color: '#1877f2',
+  },
+  commentInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: '#f0f0f0',
+  },
+  commentProfileImage: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    marginRight: 8,
+  },
+  commentInput: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    fontSize: 14,
+    maxHeight: 100,
+  },
+  sendButton: {
+    marginLeft: 8,
+    padding: 4,
   },
 });
+
+export default Post;
+
+// Para usar este componente:
+// import Post from './components/Post';
+// 
+// <Post
+//   username="Jose Asuaje"
+//   timeAgo="2h"
+//   postContent="Durante user research, the main problem of that user group should be found out. While..."
+//   initialLikesCount={14}
+//   commentsCount={4}
+//   onProfilePress={() => navigation.navigate('Profile')}
+// />
