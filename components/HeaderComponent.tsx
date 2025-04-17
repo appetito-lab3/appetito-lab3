@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router'; // Hook para manejar la navegación
 
 const HeaderComponent = () => {
-  // Función para manejar la navegación a perfil
-  const goToProfile = () => {
-    console.log('Navegando a Perfil');
-    // Aquí podrías llamar la función `perfil`
+  // Estado para manejar selección (puedes usarlo según la lógica de tu app)
+  const [isSelected, setSelection] = useState<boolean>(false);
+  
+  // Inicializa el router
+  const router = useRouter();
+
+  // Función para manejar la navegación al perfil
+  const handleNavigateToTabs = () => {
+    router.push("/(profile)"); // Redirige a la ruta del perfil
   };
 
   // Función para manejar la redirección a mensajería
   const goToMessaging = () => {
     console.log('Navegando a Mensajería');
-    // Aquí podrías llamar la función `mensajeria`
+    // Aquí puedes agregar otra ruta si lo necesitas, por ejemplo: router.push('/(messaging)')
   };
 
   return (
     <View style={styles.headerContainer}>
       {/* Imagen de perfil */}
-      <TouchableOpacity onPress={goToProfile} style={styles.profileButton}>
+      <TouchableOpacity onPress={handleNavigateToTabs} style={styles.profileButton}>
         <Image
           source={require('../assets/images/perfil.png')} // Imagen de perfil
           style={styles.profileImage}

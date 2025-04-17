@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 export default function PasswordRecovery() {
   const [emailOrUsername, setEmailOrUsername] = useState('');
@@ -15,6 +15,11 @@ export default function PasswordRecovery() {
     // Lógica para recuperación de contraseña
     console.log('Recuperar contraseña para:', emailOrUsername);
   };
+  const router = useRouter(); // Inicializa el router
+  
+    const handleNavigateloguin = () => {
+      router.push("/(login_reguistro)"); // Redirige a (tabs)
+    };
 
   return (
     <View style={styles.container}>
@@ -31,8 +36,8 @@ export default function PasswordRecovery() {
       />
 
       {/* Botón de Recuperar */}
-      <TouchableOpacity style={styles.button} >
-        <Link href={"/index"} style={styles.buttonText}>Recuperar</Link>
+      <TouchableOpacity style={styles.button} onPress={handleNavigateloguin} >
+        <Text  style={styles.buttonText} >Recuperar</Text>
       
       </TouchableOpacity>
     </View>
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FF4500',
+    color: '#FF7043',
     marginBottom: 30,
     textAlign: 'center',
   },
@@ -67,15 +72,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: '#FFD700',
-    borderRadius: 10,
-    paddingVertical: 15,
+    backgroundColor: '#FFCB05',
+    padding: 12,
+    borderRadius: 25,
     width: '100%',
     alignItems: 'center',
+    marginBottom: 20,
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#333',
   },
 });

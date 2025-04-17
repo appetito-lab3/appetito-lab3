@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
 
 export default function RegistrationScreen() {
   const [name, setName] = useState('');
@@ -100,6 +101,14 @@ export default function RegistrationScreen() {
       // navigation.navigate('Home');
     }
   };
+  const router = useRouter(); // Inicializa el router
+  
+    const handleNavigateloguin = () => {
+      router.push("/(login_reguistro)"); // Redirige a (login)
+    };
+    const handleNavigaterecord = () => {
+      router.push("/recover"); // Redirige a (login)
+    };
 
   const toggleRememberUser = () => {
     setRememberUser(!rememberUser);
@@ -115,7 +124,7 @@ export default function RegistrationScreen() {
           <Text style={styles.headerText}>Registrate aquí</Text>
           
           {/* Name Field */}
-          <Text style={styles.label}>Name</Text>
+          <Text style={styles.label}>Nombre</Text>
           <View style={styles.inputContainer}>
             <Ionicons name="person-outline" size={20} color="#FF4081" style={styles.icon} />
             <TextInput
@@ -200,13 +209,13 @@ export default function RegistrationScreen() {
             </TouchableOpacity>
             <Text style={styles.checkboxLabel}>Recordar usuario</Text>
             
-            <TouchableOpacity style={styles.forgotPasswordLink}>
+            <TouchableOpacity style={styles.forgotPasswordLink} onPress={handleNavigaterecord} >
               <Text style={styles.forgotPasswordText}>Olvidé mi contraseña</Text>
             </TouchableOpacity>
           </View>
           
           {/* Submit Button */}
-          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+          <TouchableOpacity style={styles.submitButton} onPress={handleNavigateloguin} >
             <Text style={styles.submitButtonText}>Ingresar</Text>
           </TouchableOpacity>
         </View>
@@ -218,7 +227,7 @@ export default function RegistrationScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFECD9',
+    backgroundColor: '#FFE4E1',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -306,7 +315,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   submitButtonText: {
-    color: '#333',
+    color: '#FF4081',
     fontSize: 18,
     fontWeight: '600',
   },

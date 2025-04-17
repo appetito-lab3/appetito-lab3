@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import CheckBox from 'expo-checkbox'; // Importando la librería
-import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
 
 export default function App() {
@@ -28,10 +28,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      
       <Text style={styles.header}>¡Conecta con Foodies como tú!</Text>
-
+     
       <View style={styles.inputContainer}>
-        <FontAwesome name="user" size={24} color="#FF4500" />
+        <Ionicons name="mail-outline" size={20} color="#FF4081"  />
         <TextInput
           style={styles.input}
           placeholder="Usuario"
@@ -40,7 +41,7 @@ export default function App() {
       </View>
 
       <View style={styles.inputContainer}>
-        <FontAwesome name="lock" size={24} color="#FF4500" />
+       <Ionicons name="lock-closed-outline" size={20} color="#FF4081"  />
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
@@ -73,7 +74,7 @@ export default function App() {
       <Text style={styles.or}>o</Text>
 
       <View style={styles.socialLoginContainer}>
-        <FontAwesome name="google" size={32} color="#4285F4" />
+        
       </View>
     </View>
   );
@@ -90,22 +91,20 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FF4500',
+    color: '#FF7043',
     marginBottom: 20,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#FF4500',
-    marginBottom: 20,
-    width: '100%',
+    borderBottomColor: '#ddd',
+    marginBottom: 15,
   },
   input: {
     flex: 1,
     height: 40,
-    marginLeft: 10,
-    color: '#000',
+    fontSize: 16,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -121,24 +120,24 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   link: {
-    color: '#FF4500',
+    color: '#333',
     textDecorationLine: 'underline',
   },
   button: {
-    backgroundColor: '#FFD700',
+    backgroundColor: '#FFCB05',
     padding: 12,
-    borderRadius: 5,
+    borderRadius: 25,
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
   },
   buttonText: {
-    color: '#FFF',
+    color: '#FF4081',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
   createAccountText: { // Estilo para el texto de "crear cuenta"
-    color: '#FFF',
+    color: '#FF4081',
     fontSize: 18,
     fontWeight: 'bold',
   },
