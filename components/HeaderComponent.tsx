@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router'; // Hook para manejar la navegación
 
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F4A7B9',
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingBottom: 10,
+    paddingTop: StatusBar.currentHeight
   },
   profileButton: {
     width: 50,

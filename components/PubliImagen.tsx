@@ -65,7 +65,7 @@ const Post: React.FC<PostProps> = ({
       <Text style={styles.postText}>{postContent}</Text>
       
       <Image 
-        source={require('../assets/images/china.png')} 
+        source={require('../assets/images/china.jpg')} 
         style={styles.postImage}
         resizeMode="cover"
       />

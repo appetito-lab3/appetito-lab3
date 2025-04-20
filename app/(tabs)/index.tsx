@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import HeaderComponent from '../../components/HeaderComponent'; // Componente del encabezado
 import SwipeProfiles from '../../components/SwipeProfiles'; // Componente tipo carrusel
 import PubliImagen from '../../components/PubliImagen'; // Componente de publicaciones
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* Encabezado */}
       <HeaderComponent />
 
@@ -27,7 +27,7 @@ const App = () => {
           onProfilePress={() => console.log('Navegar al perfil')} // Acción al presionar el perfil
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

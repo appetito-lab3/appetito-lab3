@@ -38,7 +38,7 @@ const profilesData: Profile[] = [
     ingredients: '8 ingredientes',
     date: 'Nueva',
     description: 'Elevate Your Fitness Goal with Cult.fit.',
-    imagePath: require('../assets/images/china.png'),
+    imagePath: require('../assets/images/china.jpg'),
   },
   {
     id: '2',
@@ -47,7 +47,7 @@ const profilesData: Profile[] = [
     rating: 4.8,
     date: 'Nueva',
     description: 'Empowering Financial Futures.',
-    imagePath: require('../assets/images/china.png'),
+    imagePath: require('../assets/images/china.jpg'),
   },
   {
     id: '3',
@@ -57,7 +57,7 @@ const profilesData: Profile[] = [
     ingredients: '5 ingredientes',
     date: 'Nueva',
     description: 'Fresh green salads.',
-    imagePath: require('../assets/images/china.png'),
+    imagePath: require('../assets/images/china.jpg'),
   },
   {
     id: '4',
@@ -67,7 +67,7 @@ const profilesData: Profile[] = [
     ingredients: '7 ingredientes',
     date: 'Popular',
     description: 'Homemade pizza.',
-    imagePath: require('../assets/images/china.png'),
+    imagePath: require('../assets/images/china.jpg'),
   },
   {
     id: '5',
@@ -77,7 +77,7 @@ const profilesData: Profile[] = [
     ingredients: '4 ingredientes',
     date: 'Tendencia',
     description: 'Nutrient-rich smoothie bowls.',
-    imagePath: require('../assets/images/china.png'),
+    imagePath: require('../assets/images/china.jpg'),
   },
 ];
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, ScrollView, View, TouchableOpacity, Text } from 'react-native';
 
-import PubliImagen from '../../../components/PubliImagen'; // Componente de publicaciones
-import UserProfile from '../../../components/UserProfile';
+import PubliImagen from '../../components/PubliImagen'; // Componente de publicaciones
+import UserProfile from '../../components/UserProfile';
 
 const App = () => {
   // Estado para controlar las publicaciones

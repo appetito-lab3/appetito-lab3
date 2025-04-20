@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import SearchBar from '../../components/LookFor'; // Importa el componente SearchBar
 import FoodCategories from '../../components/FoodCategories'; // Importa el componente FoodCategories
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   header: {
     padding: 10, // Espaciado interno
     backgroundColor: '#FFF0ED', // Fondo para destacar el área del header
-    elevation: 3, // Sombra para el header
+    marginTop: StatusBar.currentHeight
   },
   content: {
     flex: 1, // Ocupa todo el espacio restante

@@ -2,18 +2,18 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const FoodCategories = [
-  { name: 'Fitness', image: require('../assets/images/fitness.png') },
-  { name: 'Recetas', image: require('../assets/images/recetas.png') },
-  { name: 'Hamburguesas', image: require('../assets/images/hamburgesas.png') },
-  { name: 'Quesos y Embutidos', image: require('../assets/images/quesos_enbutidos.png') },
-  { name: 'China', image: require('../assets/images/china.png') },
-  { name: 'Ensaladas', image: require('../assets/images/ensaladas.png') },
-  { name: 'Italiana', image: require('../assets/images/italiana.png') },
-  { name: 'Empanadas', image: require('../assets/images/empanadas.png') },
-  { name: 'Japonesa', image: require('../assets/images/japonesa.png') },
-  { name: 'Pasapalos', image: require('../assets/images/pasapalos.png') },
-  { name: 'Postres', image: require('../assets/images/postres.png') },
-  { name: 'Arepas', image: require('../assets/images/arepas.png') },
+  { name: 'Fitness', image: require('../assets/images/fitness.jpg') },
+  { name: 'Recetas', image: require('../assets/images/recetas.jpg') },
+  { name: 'Hamburguesas', image: require('../assets/images/hamburgesas.jpg') },
+  { name: 'Quesos y Embutidos', image: require('../assets/images/quesos_enbutidos.jpg') },
+  { name: 'China', image: require('../assets/images/china.jpg') },
+  { name: 'Ensaladas', image: require('../assets/images/ensaladas.jpg') },
+  { name: 'Italiana', image: require('../assets/images/italiana.jpg') },
+  { name: 'Empanadas', image: require('../assets/images/empanadas.jpg') },
+  { name: 'Japonesa', image: require('../assets/images/japonesa.jpg') },
+  { name: 'Pasapalos', image: require('../assets/images/pasapalos.jpg') },
+  { name: 'Postres', image: require('../assets/images/postres.jpg') },
+  { name: 'Arepas', image: require('../assets/images/arepas.jpg') },
 ];
 
 const MenuGrid = () => {

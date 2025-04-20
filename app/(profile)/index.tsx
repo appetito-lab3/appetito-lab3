@@ -30,7 +30,7 @@ const ProfileMenu = () => {
       {/* Encabezado del Perfil */}
       <View style={styles.header}>
         <Image
-          source={require('../../../assets/images/perfil.png')} // Ruta de la imagen de perfil
+          source={require('../../assets/images/perfil.png')} // Ruta de la imagen de perfil
           style={styles.profileImage}
         />
         <Text style={styles.profileName}>Jose Asuaje</Text>
