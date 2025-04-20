@@ -10,7 +10,7 @@ export default function ProfileRouter () {
                 <Stack.Screen name="index"  />
                 <Stack.Screen name="ChangePassword" />
                 <Stack.Screen name="love" />
-                
+                <Stack.Screen name="MyProfile" />
                 
             </Stack>
         </ThemeProvider>

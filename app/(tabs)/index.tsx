@@ -1,22 +1,31 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import HeaderComponent from '../../components/HeaderComponent'; // Importar el componente HeaderComponent
-import SwipeProfiles from '../../components/SwipeProfiles'; // Importar el componente SwipeProfiles
+import { StyleSheet, View } from 'react-native';
+import HeaderComponent from '../../components/HeaderComponent'; // Componente del encabezado
+import SwipeProfiles from '../../components/SwipeProfiles'; // Componente tipo carrusel
+import PubliImagen from '../../components/PubliImagen'; // Componente de publicaciones
 
 const App = () => {
   return (
     <View style={styles.container}>
-      {/* Llamar el componente HeaderComponent */}
+      {/* Encabezado */}
       <HeaderComponent />
 
-      {/* Componente SwipeProfiles debajo del HeaderComponent */}
+      {/* Carrusel con imágenes de perfiles */}
       <View style={styles.swipeProfilesContainer}>
         <SwipeProfiles />
       </View>
 
-      {/* Ejemplo de contenido adicional */}
-      <View style={styles.content}>
-        <Text style={styles.text}>Bienvenido a la app!</Text>
+      {/* Contenedor de publicaciones */}
+      <View style={styles.publiImagenContainer}>
+        {/* Llamada al componente PubliImagen con las propiedades necesarias */}
+        <PubliImagen
+          username="Jose Asuaje" // Nombre del usuario
+          timeAgo="2h" // Tiempo desde la publicación
+          postContent="Durante user research, the main problem of that user group should be found out." // Contenido del post
+          initialLikesCount={14} // Cantidad inicial de "Me gusta"
+          commentsCount={4} // Cantidad inicial de comentarios
+          onProfilePress={() => console.log('Navegar al perfil')} // Acción al presionar el perfil
+        />
       </View>
     </View>
   );
@@ -25,20 +34,20 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF0ED',
+    backgroundColor: '#FFE4E1', // Fondo claro general
   },
   swipeProfilesContainer: {
-    flex: 1, // Ocupa espacio proporcional
-    backgroundColor: '#FFF', // Color de fondo claro para SwipeProfiles
-    marginVertical: 10, // Espaciado para separar del HeaderComponent
-  },
-  content: {
+    height: 120, // Altura fija para el carrusel
+    backgroundColor: '#FFE4E1', // Fondo blanco para resaltar el carrusel
+    marginTop: 10, // Separación del encabezado
+    paddingHorizontal: 10, // Margen interno para contenido del carrusel
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  text: {
-    fontSize: 18,
-    color: '#333',
+  publiImagenContainer: {
+    flex: 1, // Ocupa el espacio restante
+    backgroundColor: '#FFE4E1', // Fondo blanco para publicaciones
+    marginTop: 10, // Separación del carrusel
+    padding: 10, // Margen interno para publicaciones
   },
 });
 

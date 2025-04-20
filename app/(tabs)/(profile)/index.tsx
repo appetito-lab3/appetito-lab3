@@ -19,6 +19,9 @@ const ProfileMenu = () => {
     const handleNavigateToChagerLove = () => {
       router.push("/love"); // cambiar contraseña
     };
+    const handleNavigateToChagerMyProfile = () => {
+      router.push("/MyProfile"); // cambiar contraseña
+    };
   
     
   return (
@@ -27,12 +30,12 @@ const ProfileMenu = () => {
       {/* Encabezado del Perfil */}
       <View style={styles.header}>
         <Image
-          source={require('../../assets/images/perfil.png')} // Ruta de la imagen de perfil
+          source={require('../../../assets/images/perfil.png')} // Ruta de la imagen de perfil
           style={styles.profileImage}
         />
-        <Text style={styles.profileName}>Sarah Jhonson</Text>
+        <Text style={styles.profileName}>Jose Asuaje</Text>
         <TouchableOpacity style={styles.profileButton}>
-          <Text style={styles.profileButtonText}>Ver Perfil</Text>
+          <Text style={styles.profileButtonText} onPress={handleNavigateToChagerMyProfile}>Ver Perfil</Text>
         </TouchableOpacity>
       </View>
       

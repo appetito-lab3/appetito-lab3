@@ -25,26 +25,60 @@ export default function TabLayout() {
           },
           default: {},
         }),
-      }}>
+      }}
+    >
+      {/* Pestaña Home */}
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="house.fill" color={color} />
+          ),
         }}
       />
+
+      {/* Pestaña Explore */}
       <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          ),
         }}
       />
-       <Tabs.Screen
+      
+      {/* Nueva pestaña Hola */}
+      <Tabs.Screen
+        name="hola"
+        options={{
+          title: 'Publicar',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="plus" color={color} />
+          ),
+        }}
+      />
+      
+      {/* Pestaña Calendario */}
+      <Tabs.Screen
         name="calenEven"
         options={{
-          title: 'calendario',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="calendar" color={color} />,
+          title: 'Calendario',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="calendar" color={color} />
+          ),
+        }}
+      />
+
+      {/* Nueva pestaña Recommended */}
+      <Tabs.Screen
+        name="recommended"
+        options={{
+          title: 'Recommended',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="star" color={color} />
+          ),
         }}
       />
     </Tabs>

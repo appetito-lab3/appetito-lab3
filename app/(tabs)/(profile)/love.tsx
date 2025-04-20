@@ -28,7 +28,7 @@ const ProfileList = () => {
           <View key={profile.id} style={styles.profileCard}>
             {/* Imagen de perfil */}
             <Image
-              source={require('../../assets/images/perfil.png')} // Asegúrate de que perfil.png esté en la ruta correcta
+              source={require('../../../assets/images/perfil.png')} // Asegúrate de que perfil.png esté en la ruta correcta
               style={styles.profileImage}
             />
 
