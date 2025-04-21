@@ -64,14 +64,14 @@ export default function App() {
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleNavigateToTabs}>
-        <Text style={styles.buttonText}>entrar</Text>
+        <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleNavigateToRegister}>
-        <Text style={styles.createAccountText}>crear cuenta</Text>
+        <Text style={styles.createAccountText}>Crear cuenta</Text>
       </TouchableOpacity>
 
-      <Text style={styles.or}>o</Text>
+      
 
       <View style={styles.socialLoginContainer}>
         

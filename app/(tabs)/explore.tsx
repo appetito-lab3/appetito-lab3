@@ -6,7 +6,7 @@ import FoodCategories from '../../components/FoodCategories'; // Importa el comp
 const App = () => {
   return (
     <View style={styles.container}>
-      {/* Barra de búsqueda en la parte superior */}
+      {/* Barra de búsqueda en la parte superior  agregar una escroll */}
       <View style={styles.header}>
         <SearchBar />
       </View>

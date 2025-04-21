@@ -26,12 +26,12 @@ const PostScreen: React.FC = () => {
 
   // Media items de ejemplo
   const recentMedia: MediaItem[] = [
-    { id: '1', uri: 'https://picsum.photos/id/10/200/300', duration: '1:18' },
-    { id: '2', uri: 'https://picsum.photos/id/11/200/300', duration: '0:09' },
+    { id: '1', uri: 'https://picsum.photos/id/10/200/300',  },
+    { id: '2', uri: 'https://picsum.photos/id/11/200/300',  },
     { id: '3', uri: 'https://picsum.photos/id/12/200/300' },
-    { id: '4', uri: 'https://picsum.photos/id/13/200/300', duration: '2:07' },
-    { id: '5', uri: 'https://picsum.photos/id/14/200/300', duration: '1:33' },
-    { id: '6', uri: 'https://picsum.photos/id/15/200/300', duration: '1:24' },
+    { id: '4', uri: 'https://picsum.photos/id/13/200/300',  },
+    { id: '5', uri: 'https://picsum.photos/id/14/200/300',  },
+    { id: '6', uri: 'https://picsum.photos/id/15/200/300',  },
   ];
 
   const selectMediaItem = (item: MediaItem) => {
@@ -72,12 +72,7 @@ const PostScreen: React.FC = () => {
       </View>
 
       <View style={styles.tabContainer}>
-        <TouchableOpacity 
-          style={[styles.tabButton, activeTab === 'Post' && styles.activeTab]} 
-          onPress={() => setActiveTab('Post')}
-        >
-          <Text style={styles.tabText}>Post</Text>
-        </TouchableOpacity>
+      
         <TouchableOpacity 
           style={[styles.tabButton, activeTab === 'Carousel' && styles.activeTab]} 
           onPress={() => setActiveTab('Carousel')}
@@ -116,7 +111,7 @@ const PostScreen: React.FC = () => {
       {/* Sección de selección de medios recientes */}
       <View style={styles.recentSection}>
         <View style={styles.recentHeader}>
-          <Text style={styles.recentTitle}>Videos</Text>
+          <Text style={styles.recentTitle}>Galería</Text>
           <TouchableOpacity>
             <MaterialIcons name="keyboard-arrow-down" size={24} color="#ff6666" />
           </TouchableOpacity>

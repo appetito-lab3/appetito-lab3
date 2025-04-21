@@ -45,30 +45,6 @@ const App = () => {
     <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.contentContainer}>
       {/* Perfil del usuario */}
       <UserProfile />
-
-      {/* Contenedor de publicaciones */}
-      <View style={styles.publiImagenContainer}>
-        {posts.map((post) => (
-          <View key={post.id}>
-            <PubliImagen
-              username={post.username}
-              timeAgo={post.timeAgo}
-              postContent={post.postContent}
-              initialLikesCount={post.initialLikesCount}
-              commentsCount={post.commentsCount}
-              onProfilePress={() => console.log(`Navegar al perfil de ${post.username}`)}
-            />
-
-            {/* Botón para eliminar publicación */}
-            <TouchableOpacity
-              style={styles.deleteButton}
-              onPress={() => handleDeletePost(post.id)} // Acción de eliminación con el id de la publicación
-            >
-              <Text style={styles.deleteButtonText}>Eliminar Publicación</Text>
-            </TouchableOpacity>
-          </View>
-        ))}
-      </View>
     </ScrollView>
   );
 };

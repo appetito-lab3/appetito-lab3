@@ -22,6 +22,13 @@ const ProfileMenu = () => {
     const handleNavigateToChagerMyProfile = () => {
       router.push("/MyProfile"); // cambiar contraseña
     };
+    const handleNavigateToChagerMyLike = () => {
+      router.push("/likes"); // cambiar contraseña
+    };
+    const handleNavigateToChagerSeguidores = () => {
+      router.push("/seguidores"); // cambiar contraseña
+    };
+    
   
     
   return (
@@ -43,26 +50,22 @@ const ProfileMenu = () => {
       {/* Opciones del Menú */}
       <ScrollView style={styles.menuContainer}>
         <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Mis Likes</Text>
+          <Text style={styles.menuItemText}  onPress={handleNavigateToChagerMyLike}>Mis Likes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.menuItem} >
           <Text style={styles.menuItemText} onPress={handleNavigateToChagerLove}>Favoritos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem} onPress={handleNavigateToChagerSeguidores}>
           <Text style={styles.menuItemText}>Mis Seguidores</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.menuItem}>
           <Text style={styles.menuItemText} onPress={handleNavigateToChagerPassword}>Cambiar Contraseña</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Cuenta</Text>
-        </TouchableOpacity>
+        
         <TouchableOpacity style={styles.menuItem}>
           <Text style={styles.menuItemText}>Configuración</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuItemText}>Ayuda</Text>
-        </TouchableOpacity>
+        
         <TouchableOpacity style={styles.menuItem} onPress={handleNavigateSalir}>
           <Text style={styles.menuItemText}>Cerrar sesión</Text>
         </TouchableOpacity>
@@ -76,7 +79,7 @@ const ProfileMenu = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFC1C1', // Color rosado claro para el fondo
+    backgroundColor: '#FFE4E1', // Color rosado claro para el fondo
     paddingTop: 50,
     paddingHorizontal: 20,
   },

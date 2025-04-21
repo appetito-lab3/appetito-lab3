@@ -10,7 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import HeaderComponent from '../../components/HeaderComponent'; // Componente del encabezado
 // Type definitions
 interface CalendarDay {
   date: number;
@@ -208,14 +208,8 @@ export default function CalendarScreen() {
       <StatusBar barStyle="dark-content" backgroundColor="#FFF0ED" />
       
       {/* Header with search icon */}
-      <View style={styles.header}>
-        <View style={styles.profileIcon}>
-          <Ionicons name="person" size={16} color="#FF6B8A" />
-        </View>
-        <Text style={styles.headerTitle}>Calendario</Text>
-        <TouchableOpacity style={styles.searchButton}>
-          <Ionicons name="search" size={24} color="#FF6B8A" />
-        </TouchableOpacity>
+      <View >
+      <HeaderComponent />
       </View>
       
       {/* Events label */}

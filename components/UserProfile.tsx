@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
 
 /**
  * User Profile Component
  * Displays a profile page matching the provided design with:
  * - Circular profile image from the imagenes folder
- * - User name, pronouns and followers count
+ * - User name, pronouns, and followers count
  * - Edit and more options buttons
  * - Bio information
  * - Location with icon
@@ -16,7 +17,7 @@ import { Feather, MaterialIcons } from '@expo/vector-icons';
 export default function UserProfile() {
   // This data would typically come from an API or state
   const profileData = {
-    name: "Sarah Johnson",
+    name: "Jose Asuaje",
     pronouns: "She / Her",
     followers: 500,
     bio: "UX Designer | Crafting Intuitive Experiences for Seamless User Journeys | Bridging Design and Functionality for Digital Excellence 💻🎨",
@@ -24,6 +25,11 @@ export default function UserProfile() {
     jobTitle: "Product Designer",
     company: "Apple",
     about: "Passionate and results-driven Strategic Marketing Professional with a keen eye for brand development and a penchant for blending creativity with data-driven strategies."
+  };
+
+  const handleProfileImagePress = () => {
+    console.log("Profile image clicked");
+    // Aquí puedes agregar lógica adicional, como abrir un modal o redirigir a otra pantalla
   };
 
   const handleEditPress = () => {
@@ -35,21 +41,31 @@ export default function UserProfile() {
     console.log("More options pressed");
     // Add your more options menu logic here
   };
+// Inicializa el router
+  const router = useRouter();
 
+  // Función para manejar la navegación al perfil
+  const handleNavigateRrofile = () => {
+    router.push("/(profile)"); // Redirige a la ruta del perfil
+  };
+  const handleNavigateEditar= () => {
+    router.push("/EdiProfile"); // Redirige a la ruta del perfil
+  };
+ 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
         {/* Profile Header with Image, Name, and Action Buttons */}
         <View style={styles.headerContainer}>
           <View style={styles.profileInfoContainer}>
-            {/* Profile Image */}
-            <View style={styles.imageContainer}>
+            {/* Profile Image (Clickable) */}
+            <TouchableOpacity onPress={handleNavigateRrofile}  style={styles.imageContainer}>
               <Image 
                 source={require('../assets/images/perfil.png')}
                 style={styles.profileImage}
                 resizeMode="cover"
               />
-            </View>
+            </TouchableOpacity>
             
             {/* Name Section */}
             <View style={styles.nameSection}>
@@ -61,7 +77,7 @@ export default function UserProfile() {
           
           {/* Action Buttons */}
           <View style={styles.actionButtons}>
-            <TouchableOpacity onPress={handleEditPress} style={styles.iconButton}>
+            <TouchableOpacity onPress={handleNavigateEditar} style={styles.iconButton}>
               <Feather name="edit-2" size={20} color="#E74C3C" />
             </TouchableOpacity>
             

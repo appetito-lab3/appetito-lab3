@@ -51,8 +51,8 @@ export default function FollowersScreen() {
 
       {/* Parte superior */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>lo que me gusta</Text>
-        <Text style={styles.headerFollowers}>853 Seguidores</Text>
+        <Text style={styles.headerText}>me gustas</Text>
+        <Text style={styles.headerFollowers}>853 likes</Text>
       </View>
 
       {/* Barra de búsqueda */}

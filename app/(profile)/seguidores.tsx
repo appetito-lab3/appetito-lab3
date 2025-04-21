@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity } from 'react-native';
-
+import { Ionicons } from '@expo/vector-icons'; // Importar íconos
+import { useRouter } from 'expo-router'; // Hook para manejar la navegación
 const followers = [
   { id: '1', name: 'Neeti Mohan', isFollowing: true },
   { id: '2', name: 'John Doe', isFollowing: false },
@@ -11,6 +12,13 @@ const followers = [
 
 export default function FollowersScreen() {
   const [searchQuery, setSearchQuery] = useState('');
+  // Inicializa el router
+  const router = useRouter();
+
+  // Función para manejar la navegación al perfil
+  const handleNavigateRrofile = () => {
+    router.push("/(profile)"); // Redirige a la ruta del perfil
+  };
 
   const renderFollower = ({ item }: { item: typeof followers[0] }) => (
     <View style={styles.followerItem}>
@@ -22,26 +30,29 @@ export default function FollowersScreen() {
         <Text style={styles.followerName}>{item.name}</Text>
       </View>
 
-      {/* Botón para agregar o siguiendo */}
-      <TouchableOpacity
-        style={[
-          styles.actionButton,
-          item.isFollowing ? styles.followingButton : styles.followButton,
-        ]}
-      >
-        <Text style={styles.actionText}>
-          {item.isFollowing ? 'Siguiendo' : 'Agregar'}
-        </Text>
+      {/* Botón con iconos */}
+      <TouchableOpacity style={styles.actionButton}>
+        {item.isFollowing ? (
+          <Ionicons name="checkmark-circle" size={24} color="#28A745" /> // Icono verde para "Siguiendo"
+        ) : (
+          <Ionicons name="person-add" size={24} color="#FFB2D1" /> // Icono rosado para "Agregar"
+        )}
       </TouchableOpacity>
     </View>
+
   );
 
   return (
     <View style={styles.container}>
+      {/* Botón de salir */}
+      <TouchableOpacity style={styles.exitButton} onPress={handleNavigateRrofile}>
+        <Ionicons name="arrow-back" size={24} color="#333" />
+      </TouchableOpacity>
+
       {/* Parte superior */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Seguidores</Text>
-        <Text style={styles.headerFollowers}>853 Seguidores</Text>
+        <Text style={styles.headerText}>tus seguidores</Text>
+        <Text style={styles.headerFollowers}>853 seguidores</Text>
       </View>
 
       {/* Barra de búsqueda */}
@@ -70,9 +81,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffe4e1',
     padding: 10,
   },
+  exitButton: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+    zIndex: 1, // Asegura que el botón esté encima de otros elementos
+    padding: 10,
+  },
   header: {
     alignItems: 'center',
     marginBottom: 20,
+    marginTop: 40, // Ajusta el margen superior para evitar que se superponga con el botón de salir
   },
   headerText: {
     fontSize: 24,
@@ -121,19 +140,6 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   actionButton: {
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-  },
-  followButton: {
-    backgroundColor: '#FFB2D1', // Color rosado claro para "Agregar"
-  },
-  followingButton: {
-    backgroundColor: '#28A745', // Color verde para "Siguiendo"
-  },
-  actionText: {
-    fontSize: 14,
-    color: '#FFF',
-    fontWeight: 'bold',
+    padding: 5, // Margen interno para los iconos
   },
 });
