@@ -4,13 +4,17 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
+  StyleSheet,Alert
 } from 'react-native';
 import CheckBox from 'expo-checkbox'; // Importando la librería
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
+import { envs } from '../../core/constants/envs';
+import { useAuthStore } from '@/auth/useAuthStore';
+
 
 export default function App() {
+
   const [isSelected, setSelection] = useState<boolean>(false);
   const router = useRouter(); // Inicializa el router
 
@@ -25,6 +29,34 @@ export default function App() {
   const handleNavigateToRecover = () => {
     router.push("/recover"); // Redirige a recuperar
   };
+//console.log(`API URL Android: ${envs.EXPO_PUBLIC_API_URL_ANDROID}`);
+const { login } =useAuthStore();
+const [form, setForm] = useState({
+  email: '',
+  password: '',
+})
+
+const onLogin = async() => {
+    if (form.email.length === 0 || form.password.length === 0) {
+      return;
+    }
+    
+    try {
+      // Ahora podemos pasar apiUrl como tercer parámetro
+      const wasSuccessful = await login(form.email, form.password);
+      
+      if (wasSuccessful) {
+        // Navegar a tabs si el login fue exitoso
+        router.push("/(tabs)");
+        return;
+      }
+      
+      Alert.alert('Error', 'Usuario o contraseña incorrectos');
+    } catch (error) {
+      console.error('Login error:', error);
+      Alert.alert('Error', 'No se pudo conectar al servidor');
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -32,23 +64,31 @@ export default function App() {
       <Text style={styles.header}>¡Conecta con Foodies como tú!</Text>
      
       <View style={styles.inputContainer}>
-        <Ionicons name="mail-outline" size={20} color="#FF4081"  />
+        <Ionicons name="mail-outline" size={20} color="#FF4081" />
         <TextInput
           style={styles.input}
           placeholder="Usuario"
+          keyboardType='email-address'
+          autoCapitalize='none'
+          value={form.email}
+          onChangeText={(email) => setForm({ ...form, email })}
           placeholderTextColor="#888"
         />
       </View>
 
       <View style={styles.inputContainer}>
-       <Ionicons name="lock-closed-outline" size={20} color="#FF4081"  />
+        <Ionicons name="lock-closed-outline" size={20} color="#FF4081" />
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
+          autoCapitalize='none'
+          value={form.password}
+          onChangeText={(password) => setForm({ ...form, password })}
           placeholderTextColor="#888"
           secureTextEntry
         />
       </View>
+     
 
       <View style={styles.checkboxContainer}>
         <CheckBox
@@ -63,7 +103,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleNavigateToTabs}>
+        <TouchableOpacity style={styles.button} onPress={onLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
