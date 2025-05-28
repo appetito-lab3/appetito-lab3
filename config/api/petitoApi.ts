@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { Platform } from 'react-native';
-//import { StorageAdapter } from '../adapters/storage-adapter';
+import { StorageAdapter } from '../../adapters/storageAdapter';
 
 // Obtener las URLs de las variables de entorno de Expo
 const STAGE = process.env.EXPO_PUBLIC_STAGE || 'dev'; // 'prod' para producción
-const PROD_URL = process.env.EXPO_PUBLIC_API_URL || '';
 const API_URL_IOS = process.env.EXPO_PUBLIC_API_URL_IOS || '';
-const API_URL_ANDROID = process.env.EXPO_PUBLIC_API_URL_ANDROID || '';
+const PROD_URL = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.31.174:3000';
+const API_URL_ANDROID = process.env.EXPO_PUBLIC_API_URL_ANDROID || 'http://192.168.31.174:3000';
+
+
+
+
 
 export const API_URL = 
   (STAGE === 'prod')
@@ -23,7 +27,7 @@ const petitoApi = axios.create({
 });
 
 // TODO: Interceptors
-/*tesloApi.interceptors.request.use(
+petitoApi.interceptors.request.use(
   async (config) => {
     const token = await StorageAdapter.getItem('token');
     if (token) {
@@ -31,7 +35,7 @@ const petitoApi = axios.create({
     }
     return config;
   }
-);*/
+);
 
 export {
   petitoApi,

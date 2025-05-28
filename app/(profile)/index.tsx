@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
 import { useRouter } from "expo-router"; // Importa el hook de enrutamiento
+import { useAuthStore } from '@/auth/useAuthStore';
 
 const ProfileMenu = () => {
 
@@ -29,7 +30,7 @@ const ProfileMenu = () => {
       router.push("/seguidores"); // cambiar contraseña
     };
     
-  
+  //const {logout}= useAuthStore
     
   return (
   
