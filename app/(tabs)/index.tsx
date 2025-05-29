@@ -1,12 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View,Text } from 'react-native';
 import HeaderComponent from '../../components/HeaderComponent'; // Componente del encabezado
 import SwipeProfiles from '../../components/SwipeProfiles'; // Componente tipo carrusel
 //import PubliImagen from '../../components/PubliImagen'; // Componente de publicaciones
 import { getProductsByPage } from '../../actions/auth/products/get-products-by-page';
+import { useQuery } from '@tanstack/react-query';
+
 
 const App = () => {
-  getProductsByPage(0);
+  
+  const{ isLoading, data: products = []} =useQuery({
+    queryKey: ['products','infinite' ],
+    staleTime: 1000 * 60 * 60,              // 1 hora
+    queryFn: () => getProductsByPage(0),
+  });
   return (
     <SafeAreaView style={styles.container}>
       {/* Encabezado */}
@@ -18,6 +25,9 @@ const App = () => {
       </View>
 
        {/* Contenedor de publicaciones */}
+    
+      
+      <Text > { JSON.stringify( products, null, 2)} </Text>
     
 
 
