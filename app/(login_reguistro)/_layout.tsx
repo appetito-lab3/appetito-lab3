@@ -8,8 +8,8 @@ export default function LoginRouter () {
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack screenOptions={{headerShown: false}}>
                 <Stack.Screen name="index"  />
-                <Stack.Screen name="recuperar" />
-                <Stack.Screen name="reguistro" />
+                <Stack.Screen name="recover" />
+                <Stack.Screen name="record" />
             </Stack>
         </ThemeProvider>
     );
